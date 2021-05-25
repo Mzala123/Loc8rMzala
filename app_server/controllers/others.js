@@ -1,6 +1,6 @@
 
 module.exports.about = function(req, res){
-    res.render('generic-text', {title: 'About Mzala'});
+    res.render('generic-text', {title: 'About'});
 };
 
 
