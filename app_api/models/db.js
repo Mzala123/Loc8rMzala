@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-//var dbURL = 'mongodb://localhost/Loc8r';
-var dbURL = 'mongodb+srv://Mzala:bounce123@mzalacluster.qqifv.mongodb.net/Loc8r';
+var dbURL = 'mongodb://localhost/Loc8r';
+//var dbURL = 'mongodb+srv://Mzala:bounce123@mzalacluster.qqifv.mongodb.net/Loc8r';
 var readLine = require('readline');
 var gracefulShutdown;
 
