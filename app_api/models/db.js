@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
-var dbURL = 'mongodb://localhost/Loc8r';
-//var dbURL = 'mongodb+srv://Mzala:bounce123@mzalacluster.qqifv.mongodb.net/Loc8r';
+//var dbURL = 'mongodb://localhost/Loc8r';
+var dbURL = 'mongodb+srv://Mzala:bounce123@mzalacluster.qqifv.mongodb.net/Loc8r';
 var readLine = require('readline');
 var gracefulShutdown;
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
 mongoose.connect(dbURL);
-
-//mongoose.connect("mongodb+srv://Mzala:bounce123@mzalacluster.qqifv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useUnifiedTopology: true, useNewUrlParser: true});
 
 mongoose.connection.on('connection', function(){
    console.log('mongoose connected to ' +dbURL);
