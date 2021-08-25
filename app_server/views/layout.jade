@@ -1,10 +1,10 @@
 doctype html
-html
+html(ng-app="loc8rApp")
   head
     title= title
     link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body 
+  body()
   .navbar.navbar-default.navbar-fixed-top 
    .container 
     .navbar-header 
@@ -25,6 +25,8 @@ html
      .row  
       .col-xs-12 
         small &copy; Simon Holmes - Practice by Mzala
-
+  script(src="/angular/angular.min.js")
+  script(src="/angular/loc8rApp.js")  
   script(src='/javascripts/jquery.js')
   script(src='/bootstrap/js/bootstrap.min.js')  
+  script(src='/javascripts/validation.js')
