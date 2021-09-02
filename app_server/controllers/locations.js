@@ -144,7 +144,8 @@ module.exports.homelist = function(req, res) {
     res.render('location-review-form', {
     title: 'Review '+ locDetail.name +' on Loc8r',
     pageHeader: {title : 'Review '+locDetail.name},
-    error: req.query.err
+    error: req.query.err,
+    url: req.originalUrl
     });
  };
 
@@ -170,6 +171,7 @@ module.exports.homelist = function(req, res) {
     };
     if(!postdata.author || !postdata.rating || !postdata.reviewText){
       res.redirect('/location/' +locationid+ '/reviews/new?err=val');
+    
     }
     else{
     request(

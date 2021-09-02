@@ -88,6 +88,9 @@ var loc8rData = function ($http){
     console.log(lng, lat);
     return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20');
   };
+  var locationById = function(locationid){
+   return $http.get('/api/locations/'+locationid);
+  };
   return{
     locationByCoords : locationByCoords
   };
