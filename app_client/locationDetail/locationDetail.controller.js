@@ -34,6 +34,9 @@
                  }
              }});
              // alert("Lets show review form");
+             instanceModal.result.then(function (data){
+             vm.data.location.reviews.push(data);
+             });
          };
           
       }

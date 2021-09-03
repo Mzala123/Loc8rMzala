@@ -4,8 +4,8 @@
         .module('loc8rApp')
         .controller('reviewModalCtrl', reviewModalCtrl);
 
-    reviewModalCtrl.$inject = ['$uibModalInstance', 'locationData'];
-    function reviewModalCtrl($uibModalInstance, locationData) {
+    reviewModalCtrl.$inject = ['$uibModalInstance','loc8rData', 'locationData'];
+    function reviewModalCtrl($uibModalInstance, loc8rData, locationData) {
         var vm = this;
         vm.locationData = locationData;
         vm.formData = {};
@@ -25,19 +25,23 @@
                 rating : formData.rating,
                 reviewText : formData.reviewText
             })
-            .then(function successCallback(response){
+            .then(function successCallback(data){
               //  var data = response.data;
                 console.log('success');
+                vm.modal.close(data);
                
             }
-            ,function errorCallback(response){
+            ,function errorCallback(data){
                 vm.formError = "your review has not been submitted";
              //console.log(response);
           });
           return false;
         }
         vm.modal = {
-            cancel: function () {
+            close : function(result){
+              $uibModalInstance.close(result);
+            },
+            cancel : function () {
                 $uibModalInstance.dismiss('cancel');
             }
         };

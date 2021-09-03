@@ -6,8 +6,9 @@
   
     function addHtmlLineBreaks () {
       return function (text) {
-        return text.replace(new RegExp('\/n', 'g'), '<br/>');
-        //return output;
+        var output = text.replace(/\n/g, '<br/>');
+        //return text.replace(new RegExp('/\n/g', 'g'), '<br/>');
+        return output;
       };
     }
   
