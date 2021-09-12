@@ -1,13 +1,17 @@
+
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-
-require('./app_api/models/db');
 var uglifyJs = require('uglify-js');
 var fs = require('fs');
+var passport = require('passport');
+
+require('./app_api/models/db');
+require('./app_api/config/passport');
 
 var routes = require('./app_server/routes/index');
 //var usersRouter = require('./app_server/routes/users');
@@ -49,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 
 //app.use('/', routes);
 //app.use('/users', usersRouter);
+app.use(passport.initialize());
 app.use('/api', routesApi);
 
 app.use(function(req, res){
@@ -58,6 +63,16 @@ app.use(function(req, res){
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+//error handlers
+//catch unauthorised errors
+
+app.use(function(err, req, res, next){
+     if(err.name === 'UnauthorizedError'){
+       res.status(401);
+       res.json({"message" : err.name + ": " + err.message});
+     }
 });
 
 // error handler

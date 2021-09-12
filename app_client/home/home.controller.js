@@ -32,6 +32,7 @@ function homeCtrl ($scope, loc8rData, geolocation) {
        vm.message = data.length > 0 ? "" : "No locations Found";
        vm.data = { locations: data };
        console.log(" Whats wrong here "+vm.data);
+      
     }
      ,function errorCallback(response){
        vm.message = "Sorry, Something has gone wrong";
